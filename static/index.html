@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <title>Warszawski transport na żywo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">W</span><div><strong>Warszawa</strong><small>TRANSPORT NA ŻYWO</small></div></div>
+    <div class="live"><i></i><span id="status">Łączenie z API…</span></div>
+    <button id="locate" class="icon-button" title="Pokaż moją lokalizację" aria-label="Pokaż moją lokalizację">◎</button>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <div class="intro"><span class="eyebrow">MAPA MIEJSKA</span><h1>Wszystko<br>jest w drodze.</h1><p>Pozycje pojazdów odświeżają się co 10 sekund.</p></div>
+      <section class="filters">
+        <div class="section-title">Widoczne na mapie <span>WARSTWY</span></div>
+        <label class="filter-row"><span class="filter-icon bus-icon">↗</span><span>Autobusy</span><input type="checkbox" checked data-layer="bus"><i class="switch"></i></label>
+        <label class="filter-row"><span class="filter-icon tram-icon">↗</span><span>Tramwaje</span><input type="checkbox" checked data-layer="tram"><i class="switch"></i></label>
+        <label class="filter-row"><span class="filter-icon stop-icon">●</span><span>Przystanki</span><input type="checkbox" checked data-layer="stops"><i class="switch"></i></label>
+        <p class="notice"><b>Metro i SKM / kolej</b><br>W pliku tram.txt są dane taborowe tych pojazdów, ale brak zapytań o ich bieżące pozycje.</p>
+        <label class="nearby-row"><input id="nearby" type="checkbox" checked><span>Tylko w promieniu 1 km</span></label>
+      </section>
+      <section class="legend-card"><div class="section-title">Jak czytać mapę</div><div class="legend-item"><span class="dot bus-dot"></span> Autobus <span class="dot tram-dot"></span> Tramwaj</div><div class="legend-item"><span class="mini-stop"></span> Przystanek</div></section>
+      <div class="sidebar-foot"><span id="count">Ładowanie danych…</span><span>Źródło: ZTM Warszawa</span></div>
+    </aside>
+    <section class="map-shell"><div id="map" aria-label="Mapa pojazdów i przystanków Warszawy"></div><div class="map-caption"><span class="map-dot"></span><span id="updated">Ostatnia aktualizacja —</span></div><div id="toast" class="toast" hidden></div></section>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
